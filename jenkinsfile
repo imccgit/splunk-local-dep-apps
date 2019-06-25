@@ -10,7 +10,7 @@ node {
    }
    stage('Appinspect'){
       // Run splunk appinspect
-      sh "rm -r /tmp/appinspect"
+      sh "rm -r /tmp/appinspect || true"
       sh "wget --output-document splunk-appinspect.tar.gz http://dev.splunk.com/goto/appinspectdownload"
       sh "sudo -H pip install six==1.10.0"
       sh "sudo -H pip install python-magic"
