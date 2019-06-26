@@ -6,7 +6,7 @@ node {
    stage('Lint') {
       // Run a lint test on the app in the workspace
       sh "pwd"
-      sh "pylint ${pwd}/bin/*.py || true"
+      sh "pylint bin/*.py || true"
    }
    stage('Appinspect'){
       // Run splunk appinspect
