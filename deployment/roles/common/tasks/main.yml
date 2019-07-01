@@ -1,6 +1,6 @@
 - name: Set up multiple authorized keys
   authorized_key:
-    user: splunkuser
+    user: jenkins-ansible
     state: present
     key: '{{ item }}'
   with_file:

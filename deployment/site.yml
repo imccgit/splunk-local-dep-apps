@@ -1,6 +1,5 @@
 ---
 - hosts: splunk
-  remote_user: splunkuser
+  remote_user: jenkins-ansible
   roles:
-     - common
      - deploy
