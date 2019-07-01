@@ -4,6 +4,3 @@
   roles:
      - common
      - deploy
-
-  vars:
-    - skeleton_port: 80
