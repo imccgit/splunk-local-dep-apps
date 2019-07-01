@@ -1,6 +1,6 @@
 node {
-   stage('Github') { // maybe we want to do this in a docker agent in P?? 
-      // Clone the app 
+   stage('Github') { // maybe we want to do this in a docker agent in P??
+      // Clone the app
       git 'https://github.com/imccgit/splunk-local-dep-apps.git'
    }
    stage('Lint') {
@@ -14,9 +14,17 @@ node {
       sh "wget --output-document splunk-appinspect.tar.gz http://dev.splunk.com/goto/appinspectdownload"
       sh "sudo -H pip install six==1.10.0"
       sh "sudo -H pip install python-magic"
-      sh "sudo -H pip install splunk-appinspect.tar.gz --ignore-installed six" 
+      sh "sudo -H pip install splunk-appinspect.tar.gz --ignore-installed six"
       sh "mkdir /tmp/appinspect"
       sh "git archive --format tar HEAD | tar -xC /tmp/appinspect"
       sh "sudo splunk-appinspect inspect /tmp/appinspect --mode precert || true"
    }
+   stage('Deploy'){
+    steps {
+        dir('deployment'){ //do this in the deployment directory!
+            echo 'Deploying to test'
+            sh 'ansible-playbook -i dev-servers site.yml --connection=local'
+        }
+    }
+}
 }
