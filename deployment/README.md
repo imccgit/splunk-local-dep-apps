@@ -7,5 +7,4 @@ Directory layout
 
 Usage
 ---
-`ansible-playbook -i dev-servers site.yml`
-
+`ansible-playbook -i dev-servers site.yml --connection=local`
