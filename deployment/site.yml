@@ -1,6 +1,6 @@
 ---
-- hosts: cloud
-  remote_user: clouduser
+- hosts: splunk
+  remote_user: splunkuser
   roles:
      - common
      - deploy
