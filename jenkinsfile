@@ -20,11 +20,9 @@ node {
       sh "sudo splunk-appinspect inspect /tmp/appinspect --mode precert || true"
    }
    stage('Deploy'){
-    steps {
         dir('deployment'){ //do this in the deployment directory!
             echo 'Deploying to test'
             sh 'ansible-playbook -i dev-servers site.yml --connection=local'
         }
-    }
-}
+   }
 }
